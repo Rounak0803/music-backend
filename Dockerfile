@@ -1,6 +1,6 @@
-FROM node:18-bullseye
-RUN apt-get update && apt-get install -y python3 ffmpeg python3-pip
-RUN pip3 install yt-dlp
+FROM node:20-alpine
+RUN apk add --no-cache python3 py3-pip ffmpeg
+RUN pip3 install yt-dlp --break-system-packages
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
